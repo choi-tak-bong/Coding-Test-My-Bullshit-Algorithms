@@ -25,5 +25,15 @@ def slice_queries(text: str):
     return (text_f, text_b)
 
 def solution(words: List[str], queries: List[str]):
-    
-    return
+    answer: List[int] = []
+    for query in queries:
+        result = 0
+        text_f, text_b = slice_queries(query)
+        for word in words:
+            if len(word) == len(query):
+                continue
+            if word[text_f:text_b] == query[text_f:text_b]:
+                result += 1
+        answer.append(result)
+
+    return answer
